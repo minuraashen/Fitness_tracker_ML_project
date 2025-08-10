@@ -63,15 +63,45 @@ acc_dataframe, gyr_dataframe = read_data_from_files(files, datapath)
 # Merging datasets
 # --------------------------------------------------------------
 
-
-# --------------------------------------------------------------
-# Resample data (frequency conversion)
-# --------------------------------------------------------------
-
-# Accelerometer:    12.500HZ
-# Gyroscope:        25.000Hz
+data_frame_merged = pd.concat([acc_dataframe.iloc[:,:3], gyr_dataframe], axis=1)
 
 
-# --------------------------------------------------------------
-# Export dataset
-# --------------------------------------------------------------
+#Rename Columns
+data_frame_merged.columns=[
+	"acc_x",
+	"acc_y",
+	"acc_z",
+	"gyr_x",
+	"gyr_y",
+	"gyr_z",
+	"participant",
+	"label",
+	"category",
+	"set"
+]
+
+#Resampling data
+sampling = {
+	"acc_x": "mean",
+	"acc_y": "mean",
+	"acc_z": "mean",
+	"gyr_x": "mean",
+	"gyr_y": "mean",
+	"gyr_z": "mean",
+	"participant": "last",
+	"label": "last",
+	"category": "last",
+	"set": "last"
+}
+
+
+days = [g for n,g in data_frame_merged.groupby(pd.Grouper(freq="D"))]
+
+data_resampled = pd.concat([df.resample(rule="200ms").apply(sampling).dropna() for df in days])
+
+data_resampled["set"] = data_resampled["set"].astype("int")
+
+
+# Converted to the pickle format and export the processed data
+# Here we use pickle format as we can import this data as same as we exported
+data_resampled.to_pickle("../../data/interim/data_processed.pkl")
