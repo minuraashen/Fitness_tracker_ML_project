@@ -56,15 +56,11 @@ def read_data_from_files(files, datapath):
 files = glob("../../data/raw/MetaMotion/*.csv")
 datapath = "../../data/raw/MetaMotion\\"
 
-
+#Making the two dataframes using accelerometer and gyroscope data
 acc_dataframe, gyr_dataframe = read_data_from_files(files, datapath)
 
-# --------------------------------------------------------------
-# Merging datasets
-# --------------------------------------------------------------
-
+#Removed replicated information and restructure the dataframe
 data_frame_merged = pd.concat([acc_dataframe.iloc[:,:3], gyr_dataframe], axis=1)
-
 
 #Rename Columns
 data_frame_merged.columns=[
@@ -80,7 +76,7 @@ data_frame_merged.columns=[
 	"set"
 ]
 
-#Resampling data
+#Aggregation method for each column
 sampling = {
 	"acc_x": "mean",
 	"acc_y": "mean",
@@ -94,9 +90,10 @@ sampling = {
 	"set": "last"
 }
 
-
+#Split he data by days
 days = [g for n,g in data_frame_merged.groupby(pd.Grouper(freq="D"))]
 
+#Resampled data recorded in each day, samples per every 200ms
 data_resampled = pd.concat([df.resample(rule="200ms").apply(sampling).dropna() for df in days])
 
 data_resampled["set"] = data_resampled["set"].astype("int")
