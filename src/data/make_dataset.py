@@ -90,7 +90,7 @@ sampling = {
 	"set": "last"
 }
 
-#Split he data by days
+#Split the data by days
 days = [g for n,g in data_frame_merged.groupby(pd.Grouper(freq="D"))]
 
 #Resampled data recorded in each day, samples per every 200ms
