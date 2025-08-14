@@ -48,31 +48,121 @@ mpl.rcParams["figure.dpi"] = 100
 # Compare medium vs. heavy sets
 # --------------------------------------------------------------
 
-#Make a subset of data including squat data
-squat_data = df.query("label == 'squat'").query("category == 'heavy'").query("participant == 'A'")
-#As same as
-squat_data_2 = df[(df["label"] == "squat") & (df["category"] == "heavy") & (df["participant"] == "A")]
+category_df = df.query("label=='squat'").query("participant=='A'").reset_index()
+
+fig, ax = plt.subplots()
+category_df.groupby(["category"])["acc_y"].plot()
+ax.set_xlabel("samples")
+ax.set_ylabel("acc_y")
+ax.legend()
 
 # --------------------------------------------------------------
 # Compare participants
 # --------------------------------------------------------------
 
+participant_df = df[(df["label"]=="bench")].sort_values("participant").reset_index()
+participant_df["participant"].unique()
+
+fig, ax = plt.subplots()
+participant_df.groupby(["participant"])["acc_y"].plot()
+ax.set_xlabel("samples")
+ax.set_ylabel("acc_y")
+ax.legend()
 
 # --------------------------------------------------------------
 # Plot multiple axis
 # --------------------------------------------------------------
 
+label = "squat"
+participant = "A"
+all_axes_df = df.query(f"label == '{label}'").query(f"participant == '{participant}'").reset_index()
+
+fig, ax = plt.subplots()
+all_axes_df[["acc_x", "acc_y", "acc_z"]].plot(ax=ax)
+ax.set_xlabel("samples")
+ax.set_ylabel("acc")
+ax.legend()
 
 # --------------------------------------------------------------
 # Create a loop to plot all combinations per sensor
 # --------------------------------------------------------------
 
+labels = df["label"].unique()
+participants = df["participant"].unique()
+
+for label in labels:
+  for participant in participants:
+    all_axes_df = (
+    df.query(f"label == '{label}'")
+    .query(f"participant == '{participant}'")
+    .reset_index()
+    )
+
+    if len(all_axes_df)>0:
+      fig, ax = plt.subplots()
+      all_axes_df[["acc_x", "acc_y", "acc_z"]].plot(ax=ax)
+      ax.set_xlabel("samples")
+      ax.set_ylabel("acc")
+      ax.set_title(f"{label} ({participant})".title())
+      ax.legend()
+
+for label in labels:
+  for participant in participants:
+    all_axes_df = (
+    df.query(f"label == '{label}'")
+    .query(f"participant == '{participant}'")
+    .reset_index()
+    )
+
+    if len(all_axes_df)>0:
+      fig, ax = plt.subplots()
+      all_axes_df[["gyr_x", "gyr_y", "gyr_z"]].plot(ax=ax)
+      ax.set_xlabel("samples")
+      ax.set_ylabel("gyr")
+      ax.set_title(f"{label} ({participant})".title())
+      ax.legend()
+    
 
 # --------------------------------------------------------------
 # Combine plots in one figure
 # --------------------------------------------------------------
 
+label = "row"
+participant = "C"
+
+combined_df = df.query(f"label == '{label}'").query(f"participant == '{participant}'").reset_index()
+
+fig, ax = plt.subplots(nrows=2, sharex=True, figsize=(20,10))
+combined_df[["acc_x", "acc_y", "acc_z"]].plot(ax=ax[0])
+combined_df[["gyr_x", "gyr_y", "gyr_z"]].plot(ax=ax[1])
+
+ax[0].legend(loc="upper center", bbox_to_anchor=(0.5,1.15), ncol=3, fancybox=True)
+ax[1].legend(loc="upper center", bbox_to_anchor=(0.5,1.15), ncol=3, fancybox=True)
+ax[1].set_xlabel("samples")
 
 # --------------------------------------------------------------
 # Loop over all combinations and export for both sensors
 # --------------------------------------------------------------
+
+labels = df["label"].unique()
+participants = df["participant"].unique()
+
+for label in labels:
+  for participant in participants:
+    combined_axes_plot = (
+      df.query(f"label == '{label}'")
+      .query(f" participant == '{participant}'")
+      .reset_index()
+    )
+
+    if len(combined_axes_plot)>0:
+      fig, ax = plt.subplots(nrows=2, sharex=True, figsize=(20,10))
+      combined_df[["acc_x", "acc_y", "acc_z"]].plot(ax=ax[0])
+      combined_df[["gyr_x", "gyr_y", "gyr_z"]].plot(ax=ax[1])
+
+      ax[0].legend(loc="upper center", bbox_to_anchor=(0.5,1.15), ncol=3, fancybox=True)
+      ax[1].legend(loc="upper center", bbox_to_anchor=(0.5,1.15), ncol=3, fancybox=True)
+      ax[1].set_xlabel("samples")
+      
+      plt.savefig(f"../../reports_and_figures/{label.title()} ({participant}).png")
+      plt.show()
