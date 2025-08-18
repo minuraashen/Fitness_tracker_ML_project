@@ -1,4 +1,4 @@
-<img width="1086" height="408" alt="image" src="https://github.com/user-attachments/assets/e7387614-12bc-4be3-ad3a-cc42ce092d69" /># 🏋️ Fitness Tracker – Machine Learning with IMU Data
+# 🏋️ Fitness Tracker – Machine Learning with IMU Data
 
 This project focuses on **automatic tracking of strength training exercises** using data from a wristband’s **accelerometer and gyroscope**. The ultimate goal is to develop models that can assist, like a personal trainer, in **tracking exercises, counting repetitions, and detecting improper form**.
 
