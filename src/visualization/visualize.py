@@ -6,6 +6,11 @@ from IPython.display import display
 # Load data
 df = pd.read_pickle("../../data/interim/data_processed.pkl")
 
+#Adjust plot setting
+mpl.style.use("seaborn-v0_8-deep")
+mpl.rcParams["figure.figsize"] = (20,5)
+mpl.rcParams["figure.dpi"] = 100
+
 # Loop over all combinations and export for both sensors
 labels = df["label"].unique()
 participants = df["participant"].unique()
