@@ -20,10 +20,14 @@ The aim of this project is to explore the potential of **context-aware fitness a
 ✅ **Data Preprocessing**  
 - Noise filtering & normalization  
 - Segmentation into exercise repetitions  
+Final dataframe structure
+![](https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/dataframe.png)
 
 ✅ **Visualization**  
 - Time-series plots for motion signals  
-- Gyroscope vs Accelerometer pattern analysis  
+- Gyroscope vs Accelerometer pattern analysis
+Accelerometer and gyroscope data for a perticular excersice and participant in a same plot
+![](https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/Bench%20(A).png)
 
 🚧 **Next Steps**  
 - Feature extraction (time-domain & frequency-domain features)  
