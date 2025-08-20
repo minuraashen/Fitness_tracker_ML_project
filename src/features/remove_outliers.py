@@ -22,6 +22,7 @@ plt.style.use("fivethirtyeight")
 plt.rcParams["figure.figsize"] = (20,5)
 plt.rcParams["figure.dpi"] = 100
 
+# Visualize outliers using boxplots
 df[outlier_columns[:3]+["label"]].boxplot(by="label", figsize=(20,10), layout=(1,3))
 df[outlier_columns[3:6]+["label"]].boxplot(by="label", figsize=(20,10), layout=(1,3))
 
@@ -29,7 +30,6 @@ df[outlier_columns[3:6]+["label"]].boxplot(by="label", figsize=(20,10), layout=(
 # Interquartile range (distribution based)
 # --------------------------------------------------------------
 
-# Insert IQR function
 def plot_binary_outliers(dataset, col, outlier_col, reset_index):
     """ Plot outliers in case of a binary outlier score. Here, the col specifies the real data
     column and outlier_col the columns with a binary value (outlier or not).
@@ -76,7 +76,7 @@ def plot_binary_outliers(dataset, col, outlier_col, reset_index):
     )
     plt.show()
 
-
+# Insert IQR function
 def mark_outliers_iqr(dataset, col):
     """Function to mark values as outliers using the IQR method.
 
@@ -234,10 +234,30 @@ for col in outlier_columns:
 # --------------------------------------------------------------
 
 # Test on single column
+col = "gyr_z"
+data_set = mark_outliers_chauvenet(df, col)
+data_set[data_set[col+"_outlier"]]
+data_set.loc[data_set[col+"_outlier"], "gyr_z"] = np.nan
 
 
 # Create a loop
+outliers_removed_df = df.copy()
+for col in outlier_columns:
+    for label in df["label"].unique():
+        data_set = mark_outliers_chauvenet(df[df["label"] == label], col)
 
+        # Replace outliers with NaN
+        data_set.loc[data_set[col+"_outlier"], col] = np.nan
+
+        # Update the column in original dataframe
+        outliers_removed_df.loc[outliers_removed_df["label"] == label, col] = data_set[col]
+
+        n_outliers = len(data_set) - len(data_set[col].dropna())
+        print(f"Removed {n_outliers} for {col} in {label}")
+
+outliers_removed_df.info()
 # --------------------------------------------------------------
 # Export new dataframe
 # --------------------------------------------------------------
+
+outliers_removed_df.to_pickle("../../data/interim/02_outlires_removed_chauvenet.pkl")
