@@ -49,26 +49,23 @@ Accelerometer and gyroscope data for a perticular excersice and participant in a
   - Chauvenet Method
   - Local Outlier Factor
 - Below Figures are illlustrated the outliers in both accelerometer and gyroscope data marked using IQR method.
-   - Outliers in Accelerometer data in x direction
-
-
-      <img width="1840" height="477" alt="outliers_iqr_acc" src="https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/outliers_iqr_acc.png"/>
-
   
-   - Outliers in Gyroscope data in y direction
- 
-     
-      <img width="1846" height="477" alt="outliers_iqr_gyr" src="https://github.com/user-attachments/assets/7771a225-519b-4e55-93f5-29e5a9bd9b14" />
+   <p align="center">
+     <figure>
+       <img src="https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/outliers_iqr_acc.png"/>
+       <figcaption>Outliers in Accelerometer data in x direction</figcaption>
+     </figure>
+     <figure>
+       <img src="https://github.com/user-attachments/assets/7771a225-519b-4e55-93f5-29e5a9bd9b14"/>
+       <figcaption>Outliers in Gyroscope data in y direction</figcaption>
+     </figure>
 
-   
 - To apply the chauvenet method for detecting outliers we need to have normally distributed dataset. It seems somehow close to normal distributions.
 
-  
-   <img width="1842" height="598" alt="check_normal_for_chauvenet_acc" src="https://github.com/user-attachments/assets/d51fbd39-305a-4eb2-b809-c7e26ad699f4" />
-
-   
-   <img width="1842" height="598" alt="check_normal_for_chauvenet_gyr" src="https://github.com/user-attachments/assets/57a5b71f-55a9-4114-965b-b9770fcf00bd" />
-
+   <p align="center">
+     <img src="https://github.com/user-attachments/assets/d51fbd39-305a-4eb2-b809-c7e26ad699f4" alt="check_normal_for_chauvenet_acc" width="300"/>
+     <img src="(https://github.com/user-attachments/assets/57a5b71f-55a9-4114-965b-b9770fcf00bd)" alt="check_normal_for_chauvenet_gyr" width="300"/>
+   </p>
 
 
 ✅ **Feature Engineering**  
