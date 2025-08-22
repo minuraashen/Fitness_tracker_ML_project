@@ -59,12 +59,13 @@ Accelerometer and gyroscope data for a perticular excersice and participant in a
        <img src="https://github.com/user-attachments/assets/7771a225-519b-4e55-93f5-29e5a9bd9b14"/>
        <figcaption>Outliers in Gyroscope data in y direction</figcaption>
      </figure>
+   </p>
 
 - To apply the chauvenet method for detecting outliers we need to have normally distributed dataset. It seems somehow close to normal distributions.
 
    <p align="center">
-     <img src="https://github.com/user-attachments/assets/d51fbd39-305a-4eb2-b809-c7e26ad699f4" alt="check_normal_for_chauvenet_acc" width="300"/>
-     <img src="(https://github.com/user-attachments/assets/57a5b71f-55a9-4114-965b-b9770fcf00bd)" alt="check_normal_for_chauvenet_gyr" width="300"/>
+     <img src="https://github.com/user-attachments/assets/d51fbd39-305a-4eb2-b809-c7e26ad699f4" alt="check_normal_for_chauvenet_acc" width="400"/>
+     <img src="https://github.com/user-attachments/assets/57a5b71f-55a9-4114-965b-b9770fcf00bd" alt="check_normal_for_chauvenet_gyr" width="400"/>
    </p>
 
 
