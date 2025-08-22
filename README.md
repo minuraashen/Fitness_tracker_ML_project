@@ -30,14 +30,18 @@ The aim of this project is to explore the potential of **context-aware fitness a
 - Segmentation into exercise repetitions  
 Final dataframe structure
 
+
 ![](https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/dataframe.png)
+
 
 ✅ **Visualization of Data**  
 - Time-series plots for motion signals  
 - Gyroscope vs Accelerometer pattern analysis
 Accelerometer and gyroscope data for a perticular excersice and participant in a same plot
 
+
 ![](https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/Bench%20(A).png)
+
 
 ✅ **Detecting Outliers**  
 - Detecting outliers in the sensor data using three methods.
@@ -46,15 +50,22 @@ Accelerometer and gyroscope data for a perticular excersice and participant in a
   - Local Outlier Factor
 - Below Figures are illlustrated the outliers in both accelerometer and gyroscope data marked using IQR method.
    - Outliers in Accelerometer data in x direction
+
+
+      <img width="1840" height="477" alt="outliers_iqr_acc" src="https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/outliers_iqr_acc.png"/>
+
+  
+   - Outliers in Gyroscope data in y direction
+ 
      
-   <img width="1840" height="477" alt="outliers_iqr_acc" src="https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/outliers_iqr_acc.png"/>
-   - Outliers in Gyroscope data in x direction
-     
-   <img width="1846" height="477" alt="outliers_iqr_gyr" src="https://github.com/user-attachments/assets/7771a225-519b-4e55-93f5-29e5a9bd9b14" />
+      <img width="1846" height="477" alt="outliers_iqr_gyr" src="https://github.com/user-attachments/assets/7771a225-519b-4e55-93f5-29e5a9bd9b14" />
+
    
 - To apply the chauvenet method for detecting outliers we need to have normally distributed dataset. It seems somehow close to normal distributions.
+
   
    <img width="1842" height="598" alt="check_normal_for_chauvenet_acc" src="https://github.com/user-attachments/assets/d51fbd39-305a-4eb2-b809-c7e26ad699f4" />
+
    
    <img width="1842" height="598" alt="check_normal_for_chauvenet_gyr" src="https://github.com/user-attachments/assets/57a5b71f-55a9-4114-965b-b9770fcf00bd" />
 
