@@ -65,7 +65,7 @@ The aim of this project is to explore the potential of **context-aware fitness a
   - Outliers detected in accelerometer and gyroscope data using the **IQR method**:  
 
     <p align="center">
-      <img src="https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/outliers_iqr_acc.png" width="400" />
+      <img src="https://github.com/minuraashen/Fitness_tracker_ML_project/blob/main/reports_and_figures/outliers_iqr_acc.png" width="400" height="600"/>
       <img src="https://github.com/user-attachments/assets/7771a225-519b-4e55-93f5-29e5a9bd9b14" width="400" />
     </p>
 
@@ -91,7 +91,8 @@ The aim of this project is to explore the potential of **context-aware fitness a
 
 - Local Outlier factor
      <p align="center">
-        <img width="800" height="477" alt="lof_acc" src="https://github.com/user-attachments/assets/3ea8c6e8-071f-4345-be03-57ddc7537d7f" />
+        <img width="400" alt="lof_acc" src="https://github.com/user-attachments/assets/3ea8c6e8-071f-4345-be03-57ddc7537d7f" />
+        <img width="400"  alt="lof_gyr" src="https://github.com/user-attachments/assets/b1b396c2-0cc5-4d8c-959f-b104f890694e" />
      </p>
 
 
@@ -138,7 +139,7 @@ The aim of this project is to explore the potential of **context-aware fitness a
 
 - **Train-Test Split**: Prepared data for model training.
   <p align="center">
-    <img src="https://github.com/user-attachments/assets/1231086f-f47a-4e90-b368-a23dc2169a73" alt="Train-Test Split" width="600"/>
+    <img width="500" alt="train_test_split" src="https://github.com/user-attachments/assets/482fc102-41a3-45c9-bbfb-cc434c28b091" />
   </p>
 
 🚧 **Next Steps**   
