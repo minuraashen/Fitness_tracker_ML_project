@@ -71,7 +71,32 @@ feature_set_4 = list(set(feature_set_3 + freq_features + cluster_features))
 # Perform forward feature selection using simple decision tree
 # --------------------------------------------------------------
 
+learner = ClassificationAlgorithms()
 
+max_features = 10
+
+selected_features, ordered_features, ordered_scores = learner.forward_selection(
+    max_features,
+    x_train,
+    y_train
+)
+
+selected_features = ['acc_z_freq_0.0_Hz_ws_14',
+ 'acc_x_freq_0.0_Hz_ws_14',
+ 'gyr_r_freq_0.0_Hz_ws_14',
+ 'acc_y_temp_mean_ws_5',
+ 'acc_r_temp_std_ws_5',
+ 'gyr_x',
+ 'acc_r_freq_0.0_Hz_ws_14',
+ 'gyr_y_temp_mean_ws_5',
+ 'gyr_r_temp_mean_ws_5',
+ 'gyr_x_freq_1.429_Hz_ws_14']
+
+plt.figure(figsize=(10,8))
+plt.plot(range(1, len(ordered_scores)+1), ordered_scores, marker='o')
+plt.xlabel("Number of Features")
+plt.ylabel("Accuracy Score")
+plt.show()
 
 # --------------------------------------------------------------
 # Grid search for best hyperparameters and model selection
