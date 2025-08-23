@@ -1,2 +1,4 @@
-resources
-references
+resources/
+references/
+env/
+_pycahe_/
