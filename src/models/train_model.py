@@ -86,13 +86,13 @@ selected_features, ordered_features, ordered_scores = learner.forward_selection(
 selected_features = ['acc_z_freq_0.0_Hz_ws_14',
  'acc_x_freq_0.0_Hz_ws_14',
  'gyr_r_freq_0.0_Hz_ws_14',
- 'acc_y_temp_mean_ws_5',
- 'acc_r_temp_std_ws_5',
- 'gyr_x',
- 'acc_r_freq_0.0_Hz_ws_14',
- 'gyr_y_temp_mean_ws_5',
- 'gyr_r_temp_mean_ws_5',
- 'gyr_x_freq_1.429_Hz_ws_14']
+ 'acc_z',
+ 'acc_y_freq_0.0_Hz_ws_14',
+ 'gyr_r_freq_1.429_Hz_ws_14',
+ 'gyr_r_max_freq',
+ 'gyr_x_max_freq',
+ 'acc_z_freq_2.143_Hz_ws_14',
+ 'acc_x_max_freq']
 
 plt.figure(figsize=(10,8))
 plt.plot(range(1, len(ordered_scores)+1), ordered_scores, marker='o')
@@ -256,27 +256,8 @@ classes = class_test_prob_y.columns
 cm = confusion_matrix(y_true=y_test, y_pred=class_test_y, labels=classes)
 
 plt.figure(figsize=(10,10))
-plt.imshow(cm, interpolation="nearest", cmap=plt.cm.Blues)
+sns.heatmap(cm, annot=True, fmt='d', cmap="Blues",xticklabels=classes, yticklabels=classes)
 plt.title("Confusion Matrix")
-plt.colorbar()
-tick_marks = np.arange(len(classes))
-plt.xticks(tick_marks, classes)
-plt.yticks(tick_marks, classes)
-
-thresh = cm.max() / 2
-for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-  plt.text(
-    i,
-    j,
-    format(cm[i,j]),
-    horizontalalignment = "center",
-    color="white" if cm[i,j] > thresh else "black"
-  )
-
-plt.ylabel("True label")
-plt.xlabel("Predicted label")
-plt.grid(False)
-
 
 # --------------------------------------------------------------
 # Select train and test data based on participant
@@ -325,27 +306,10 @@ classes = class_test_prob_y.columns
 
 cm = confusion_matrix(y_true=Y_test, y_pred=class_test_y, labels=classes)
 
-plt.figure(figsize=(10,10))
-plt.imshow(cm, interpolation="nearest", cmap=plt.cm.Blues)
+plt.figure(figsize=(11,10))
+sns.heatmap(cm, annot=True, fmt='d', cmap="Blues", xticklabels=classes, yticklabels=classes)
 plt.title("Confusion Matrix")
-plt.colorbar()
-tick_marks = np.arange(len(classes))
-plt.xticks(tick_marks, classes)
-plt.yticks(tick_marks, classes)
 
-thresh = cm.max() / 2
-for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-  plt.text(
-    i,
-    j,
-    format(cm[i,j]),
-    horizontalalignment = "center",
-    color="white" if cm[i,j] > thresh else "black"
-  )
-
-plt.ylabel("True label")
-plt.xlabel("Predicted label")
-plt.grid(False)
 
 # --------------------------------------------------------------
 # Try nueral network model with the selected features
