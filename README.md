@@ -284,3 +284,9 @@ fitness-tracker-ml/
 
 ---
 
+## References
+- Hoogendoorn, M., & Funk, B. (2017). *Machine Learning for the Quantified Self: On the Art of Learning from Sensory Data*. Springer. (Chapter 7)
+- ML4QS GitHub Repository: [https://github.com/davidstap/ML4QS](https://github.com/davidstap/ML4QS)
+
+  
+
