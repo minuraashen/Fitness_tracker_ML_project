@@ -278,7 +278,7 @@ fitness-tracker-ml/
 
 ## 📌 Applications
 
-- Automatic exercise classification (squats, bench press, curls, etc.)  
+- Automatic exercise classification (squats, bench press, deadlifts, etc.)  
 - Real time **repitition counting**  
 - Integration into **wearable fitness trackers**  
 
